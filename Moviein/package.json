@@ -1,0 +1,11 @@
+{
+  "name": "moviein",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "cd moviein/ && npm run start",
+    "build": "cd moviein/ && npm run build"
+  },
+  "author": "",
+  "license": "ISC"
+}

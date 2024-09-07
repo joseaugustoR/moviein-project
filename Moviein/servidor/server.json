@@ -1,0 +1,24 @@
+{
+    "apps": [
+        {
+            "name": "moviein-cliente",
+            "script": "../moviein/server.js",
+            "instances": 1,
+            "exec_mode": "cluster",
+            "env": {
+                "NODE_ENV": "production",
+                "PORT": 3000
+            }
+        },
+        {
+            "name": "moviein-servidor",
+            "script": "dist/server.js",
+            "instances": 1,
+            "exec_mode": "cluster",
+            "env": {
+                "NODE_ENV": "production",
+                "PORT": 3001
+            }
+        }
+    ]
+}

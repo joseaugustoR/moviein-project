@@ -1,0 +1,77 @@
+*{
+    font-family: "poppins", sans-serif;
+    color: #FBF5FC;
+}
+
+body{
+    background-color: #30284d;
+}
+
+.box{
+    background-color: #191825;
+    margin: 40px 100px 40px 100px;
+    border-radius: 10px;
+}
+
+.title{
+    font-size: 20px;
+    padding: 20px;
+}
+
+.consulta-form{
+    padding: 20px;
+}
+
+.box-text[type="text"] {
+    padding: 5px;
+     border: 2px solid;
+     border-color: #FBF5FC;
+     border-radius: 10px;
+     background-color: #191825;
+     outline: none;
+     font-size: 15px solid;
+ }
+ 
+.search {
+     border-radius: 10px;
+     border: none;
+     background-color: #865DFF;
+     padding: 10px 40px 10px 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 12px;
+    text-align: left;
+}
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #191825;
+}
+button {
+    padding: 5px 10px;
+    font-size: 16px;
+    margin: 2px;
+    cursor: pointer;
+}
+.edit-btn {
+    background-color: #865DFF;
+    color: #FBF5FC;
+    border-radius: 10px;
+    border: none;
+    padding: 3px 20px 3px 20px;
+    font-size: 12px;
+}
+.delete-btn {
+    background-color: #C20439;
+    color: #FBF5FC;
+    border-radius: 10px;
+    border: none;
+    padding: 3px 20px 3px 20px;
+    font-size: 12px;
+}

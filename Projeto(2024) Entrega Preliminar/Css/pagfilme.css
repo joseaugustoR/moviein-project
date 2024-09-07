@@ -1,0 +1,135 @@
+
+
+
+.indicacao {
+    width: 80px;
+    height: 80px;
+    margin: 50px 0px 0px 100px;
+}
+
+
+h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 60px;
+    margin-left: 100px;
+    color: white;
+    
+}
+
+h5 {
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    font-size: 18px;
+    margin-left: 100px;
+    width: 800px;
+    margin-bottom: 100px;
+    color: white;
+
+}
+
+.fundo {
+    position: absolute;
+}
+
+.fundo:before,
+.fundo {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+.div1{
+    margin-left: 100px;
+    justify-items: left;
+    align-items: center;
+    text-align: center;
+    display: inline-block;
+
+}
+
+.div2{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    justify-items: left;
+    align-items: top;
+    text-align: top;
+    display: inline-block;
+    background-color: #865DFF;
+    border-radius: 30px;
+    padding: 2px 20px 2px 20px;
+
+}
+
+.subtexto {
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+.download {
+    text-decoration: none;
+    color: white;
+    background-color: #865DFF;
+    padding: 23px;
+    position:relative;
+    border-radius: 40px;
+    top: 0px;
+    right: 10px;
+    bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width:1400px){ 
+
+    h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 35px;
+
+    }
+
+    h5 {
+        font-family: "Poppins", sans-serif;
+        text-align: left;
+        font-size: 14px;
+        margin-bottom: 60px;
+    }
+
+    .indicacao {
+        width: 60px;
+        height: 60px;
+        margin: 50px 0px 0px 100px;
+    }
+    
+
+}
+
+@media screen and (max-width: 830px) {
+
+    h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 25px;
+
+    }
+
+    h5 {
+        font-family: "Poppins", sans-serif;
+        text-align: left;
+        font-size: 10px;
+        margin-bottom: 60px;
+    }
+
+
+    .indicacao {
+        width: 40px;
+        height: 40px;
+        margin: 50px 0px 0px 100px;
+    }
+
+}

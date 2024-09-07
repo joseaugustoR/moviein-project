@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="pay.css">
+    <link rel="icon" href="../../../build/favicon.ico" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Pagamento</title>
+</head>
+<body>
+    <div class="animated-background"></div>
+    <div class="container">
+        <img alt="" class="Logo" src="../../assets/logo.png" >
+        <h2>Tela de Pagamento</h2>
+        <form>
+            <div class="form-group">
+                <label for="nome">Nome do Titular:</label>
+                <input type="text"  id="nome" name="nome" placeholder="nome completo" required>
+            </div>
+            <div class="form-group">
+                <label for="cartao">Número do Cartão:</label>
+                <input type="text" id="cartao" name="cartao" placeholder="**** **** **** ****" required>
+            </div>
+            <div class="form-group">
+                <label for="validade">Data de Validade:</label>
+                <input type="date" id="validade" name="validade" placeholder="MM/AA" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="number" id="cvv" name="cvv" placeholder="***" required>
+            </div>
+            <input type="submit" id="pagar"  value="Pagar">
+            <button type="button" class="voltar" onclick="goBack()">Voltar</button>
+        </form>
+    </div>
+    <script src="./Pagamento.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../img/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Css/consulta.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="../Js/consulta.js"></script>
+    <title>Consulta de usuário</title>
+</head>
+
+<body>
+    <main>
+        <div class="box">
+            <p class="title">Consulta de Usuário</p>
+            <div class="form">
+                <form class="consulta-form" onsubmit="return searchContact()">
+                    <div class="text">
+                        <label for="nome" class="box-title">Nome</label> <br>
+                        <input type="text" id="nomeInput" class="box-text" name="nome" placeholder="...">
+                    </div>
+                    <br>
+                    <div class="text">
+                        <label for="email" class="box-title">Email</label> <br>
+                        <input type="text" id="emailInput" class="box-text" name="email" placeholder="...">
+                    </div>
+                    <br>
+                    <button type="submit" class="search">Buscar</button>
+                </form>
+                <div class="resultado-consulta">
+                    <p class="title">Resultados da Consulta</p>
+                    <table id="contactTable">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Nascimento</th>
+                                <th>Gênero</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th>Tel</th>
+                                <th>CEP</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>João Silva da braga</td>
+                                <td>23/05/1999</td>
+                                <td>M</td>
+                                <td>joao.silva@gmail.com</td>
+                                <td>999.999.999-99</td>
+                                <td>(21) 98888-8888</td>
+                                <td>21810-007</td>
+                                <td>
+                                    <button class="edit-btn" onclick="editarContato(this)">Editar</button>
+                                    <button class="delete-btn" onclick="excluirContato(this)">Excluir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Maria Oliveira</td>
+                                <td>27/02/1990</td>
+                                <td>F</td>
+                                <td>maria.oliveira@gmail.com</td>
+                                <td>333.222.333-22</td>
+                                <td>(21) 96833-7696</td>
+                                <td>21875-070</td>
+                                <td>
+                                    <button class="edit-btn" onclick="editarContato(this)">Editar</button>
+                                    <button class="delete-btn" onclick="excluirContato(this)">Excluir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Pereira</td>
+                                <td>02/11/2002</td>
+                                <td>M</td>
+                                <td>carlos.pereira@gmail.com</td>
+                                <td>111.666.378-99</td>
+                                <td>(21) 98356-0154</td>
+                                <td>23056-050</td>
+                                <td>
+                                    <button class="edit-btn" onclick="editarContato(this)">Editar</button>
+                                    <button class="delete-btn" onclick="excluirContato(this)">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    
+</body>
+
+</html>

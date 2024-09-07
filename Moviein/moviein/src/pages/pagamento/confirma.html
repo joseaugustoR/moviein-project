@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../../build/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Pagamento</title>
+    <link rel="stylesheet" href="confirma.css">
+</head>
+<body>
+    <div class="confirmation-container">
+        <h1>Pagamento Confirmado</h1>
+        <p>Seu pagamento foi realizado com sucesso!</p>
+        <div class="details">
+            <p><strong>Tipo de assinatura:</strong> Mensal</p>
+            <p><strong>Valor:</strong> R$ 18,00</p>
+            <p><strong>Nome do assinante:</strong><!--link com o banco de dados--></p>
+            <p><strong>CPF:</strong><!--link com o banco de dados--></p>
+            <p class="data-container" id="data-container"></p>
+            <p id="numero-aleatorio">ID da Transação:</p>
+        </div>
+        <button onclick="handlePrint()">Imprimir Recibo</button>
+        <!--<button onclick="handleNewsubscription()">Fazer Nova Assinatura</button>-->
+        <button type="button" class="voltar" onclick="goBack()">Voltar</button>
+    </div>
+    <script src="confirma.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 255 100% 68%;
+    --redPalid: 316, 93%, 23%;
+    --red: 343 96% 39%;
+    --dark: 245 21% 12%;
+    
+    --text: 245 21% 12%;
+    --card: 291 54% 97%;
+    --background: 0 0% 100%;    
+    --radius: 0.5rem;
+    
+    --status-success: 144 74% 48%;
+    --status-info: 180 100% 63%;
+    --status-warning: 68 100% 63%;
+    --status-orange: 25 100% 63%;
+  } 
+
+  .dark {
+    --primary: 255 100% 68%;
+    --redPalid: 316, 93%, 23%;
+    --red: 343 96% 42%;
+    --dark: 245 21% 12%;
+    
+    --text: 0 0% 100%;
+    --card: 245 21% 12%;
+    --background:245 21% 12%;
+    --radius: 0.5rem;
+
+    --status-success: 144 74% 48%;
+  }
+}
+
+@layer base {
+  /* * {
+      @apply border-border;
+    } */
+    html, body {
+      @apply bg-background text-text;
+    }
+
+    h1,h2,h3,h4,h5,p,b,small,label {
+      @apply text-text;
+    }
+
+    .toast-theme {
+      @apply bg-primary text-primary;
+    }
+}
+
+;

@@ -1,0 +1,99 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = "postgres://dvlvctun:u1gQQ6T2PxiVXJAl1hA1GcjkWA-81PZv@kesavan.db.elephantsql.com/dvlvctun"
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Usuario {
+  id                Int                @id @default(autoincrement())
+  email             String             @unique
+  nome              String?
+  funcao            String
+  senha             String
+  thumb             String?
+  Auth2             Boolean?
+  asaasClienteId    String?
+  deletadoEm        DateTime?
+  usuarioInformacao UsuarioInformacao?
+  assinatura        Assinatura?
+  Filme             Filme[]
+  clienteFilme      ClienteFilme[]
+}
+
+model UsuarioInformacao {
+  id             Int      @id @default(autoincrement())
+  usuarioId      Int      @unique
+  cpf            String
+  dataNascimento DateTime
+  nomeMaterno    String
+  telefone       String
+  genero         String
+  cep            String
+  pais           String
+  estado         String
+  bairro         String
+  complemento    String
+  cidade         String
+  numero         String
+  usuario        Usuario  @relation(fields: [usuarioId], references: [id])
+}
+
+model Filme {
+  id              Int              @id @default(autoincrement())
+  autorId         Int
+  nome            String
+  categoria       String
+  referencia      String
+  imagemThumb     String
+  classificacao   String
+  duracao         Float            @default(0)
+  publicadoEm     DateTime         @default(now())
+  autor           Usuario          @relation(fields: [autorId], references: [id])
+  InformacaoFilme InformacaoFilme?
+  ClienteFilme    ClienteFilme[]
+}
+
+model InformacaoFilme {
+  id            Int    @id @default(autoincrement())
+  descricao     String @db.VarChar(800)
+  imagemCaminho String
+
+  filmeId Int   @unique
+  filme   Filme @relation(fields: [filmeId], references: [id])
+}
+
+model Assinatura {
+  id                Int       @id @default(autoincrement())
+  usuarioId         Int       @unique
+  assinatura        String
+  asaasAssinaturaId String
+  expiradoEm        DateTime?
+  preco             Decimal
+  tipo              String
+
+  Usuario Usuario @relation(fields: [usuarioId], references: [id])
+}
+
+model ClienteFilme {
+  id        Int      @id @default(autoincrement())
+  pausadoEm Decimal
+  terminaEm DateTime
+
+  filmeId   Int      @unique
+  filme     Filme    @relation(fields: [filmeId], references: [id])
+  Usuario   Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId Int?
+}
+
+model Log {
+  id       Int      @id @default(autoincrement())
+  mensagem String
+  nome     String
+  email    String
+  criadoEm DateTime
+}

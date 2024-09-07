@@ -1,0 +1,99 @@
+name: Build and Deploy
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Checkout Repository
+       uses: actions/checkout@v2
+
+     - name: Setup Node.js
+       uses: actions/setup-node@v2
+       with:
+         node-version: '20'
+
+     - name: Install Dependencies-Service
+       run: npm install
+       working-directory: Moviein/servidor
+
+     - name: Install Dependencies-Client
+       run: npm install
+       working-directory: Moviein/moviein
+
+     - name: Build Client
+       run: |
+        npm run build
+       working-directory: Moviein
+
+     - name: clear node_modules client
+       run: |
+        rm -rf node_modules
+       working-directory: Moviein/moviein
+
+     - name: clear node_modules server
+       run: |
+         rm -rf node_modules
+       working-directory: Moviein/servidor
+
+     - name: Prepare SSH Key
+       run: |
+          mkdir -p ~/.ssh/
+          touch ~/.ssh/known_hosts
+          ssh-keygen -R ${{ secrets.AWS_INSTANCE_IP }}
+          echo "${{ secrets.AWS_SSH_KEY }}" > ssh_key.pem
+          chmod 600 ssh_key.pem
+
+     - name: Clear projects clients and server
+       run: |
+         sleep 2s
+         ssh -o StrictHostKeyChecking=no -i ssh_key.pem bitnami@${{ secrets.AWS_INSTANCE_IP }} "cd ./htdocs && rm -rf moviein && rm -rf servidor"
+       
+     - name: Deploy client to Server
+       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+       with:
+          username: 'bitnami'
+          server: '${{ secrets.AWS_INSTANCE_IP }}'
+          ssh_private_key: ${{ secrets.AWS_SSH_KEY }}
+          local_path: 'Moviein/moviein'
+          remote_path: '/opt/bitnami/apache/htdocs'
+          sftpArgs: '-o ConnectTimeout=5'
+          exclude: 'node_modules'
+          rsyncFlags: '--exclude=node_modules'
+
+     - name: Deploy server to Server
+       uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+       with:
+          username: 'bitnami'
+          server: '${{ secrets.AWS_INSTANCE_IP }}'
+          ssh_private_key: ${{ secrets.AWS_SSH_KEY }}
+          local_path: 'Moviein/servidor'
+          remote_path: '/opt/bitnami/apache/htdocs'
+          sftpArgs: '-o ConnectTimeout=5'
+          exclude: 'node_modules'
+          rsyncFlags: '--exclude=node_modules'
+
+     - name: Node Install
+       run: |
+          sleep 2s
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem bitnami@${{ secrets.AWS_INSTANCE_IP }} "cd ./htdocs/moviein && npm install && cd && cd ./htdocs/servidor && npm install"
+     
+     - name: Create .env file on server
+       run: |
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem bitnami@${{ secrets.AWS_INSTANCE_IP }} << 'EOF'
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" > ./htdocs/servidor/.env
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ./htdocs/servidor/.env
+          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> ./htdocs/servidor/.env
+          echo "ASAAS_API_KEY=${{ secrets.ASAAS_API_KEY }}" >> ./htdocs/servidor/.env
+          EOF
+     
+     - name: Start Node.js Server
+       run: |
+          sleep 2s
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem bitnami@${{ secrets.AWS_INSTANCE_IP }} "cd && cd ./htdocs/servidor && pm2 start server.json --watch"
+       shell: bash

@@ -1,0 +1,72 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #191825;
+    height: 100vh;
+    margin: 0;
+}
+
+#tela {
+    padding-top: 20px;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*#vector {
+     padding: 50px 0px 0 170px; 
+}*/
+
+#erro {
+    font-size: 40px;
+    color: #FBF5FC;
+    text-align: center;
+}
+
+
+#logo{
+    width: 200px;
+}
+
+.ball-red {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    opacity: .6;
+    background: #D2043D;
+    filter: blur(64px);
+    position: absolute;
+    right: 45px;
+    bottom: 120px;
+    z-index: -1;
+}
+
+.ball-purple {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    opacity: .6;
+    background: #865DFF;
+    filter: blur(64px);
+    position: absolute;
+    left: 45px;
+    top: 10px;
+    z-index: -1;
+}
+
+.ball-lilac {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    opacity: .6;
+    background: #a385fc;
+    filter: blur(64px);
+    position: absolute;
+    left: 405px;
+    top: 300px;
+    z-index: -1;
+}

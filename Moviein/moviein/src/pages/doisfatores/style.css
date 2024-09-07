@@ -1,0 +1,103 @@
+*{
+    font-family: "poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #865DFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container{
+    width: 400px;
+    height: min-content;
+    background-color: #FBF5FC;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.container .icone{
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #865DFF;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+}
+
+.container .icone img{
+    width: 60px;
+    height: 60px;
+}
+
+.container h4{
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .04rem;
+    color: #191825;
+}
+
+.container form, .container form .grupoInputs{
+    width: 100%;
+}
+
+.container form .grupoInputs{
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container form input{
+    width: 55px;
+    height: 55px;
+    margin:  0 8px;
+    font-size: 1.5rem;
+    text-align: center;
+    background: #e8e2e9;
+    color: transparent;
+    text-shadow: 0 0 0 #191825;
+    transition: .1s ease-in-out;
+    border: none;
+}
+
+.container form input::-webkit-inner-spin-button{
+    display: none;
+}
+
+.container form input:focus{
+    outline: 2px solid #865DFF;
+    outline-offset: 3px;
+}
+
+.container form button{
+    cursor: pointer;
+    pointer-events: none;
+    color: #FBF5FC;
+    background: #865DFF;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: .04rem;
+    border-radius: 8px;
+    border: none;
+    opacity: .8;
+    transition: .3s;
+}
+
+.container form button:hover{
+    background: #7450e0;
+}
+
+.container form button.ativo{
+    opacity: 1;
+    pointer-events: auto;
+}
